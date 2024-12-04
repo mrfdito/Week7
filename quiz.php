@@ -1,15 +1,12 @@
 <?php
-// File: quiz.php
 
-// Mengambil data dari file data.php
 require 'data.php';
 
-// Mengecek jika data player telah dikirim
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $playerName = htmlspecialchars($_POST['playerName']);
     $playerNIM = htmlspecialchars($_POST['playerNIM']);
 } else {
-    // Jika form belum disubmit, redirect kembali ke form
     header("Location: index.html");
     exit;
 }
@@ -30,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>NIM: <?php echo $playerNIM; ?></p>
             <form action="submit.php" method="POST">
                 <?php
-                // Menampilkan soal-soal dari data quiz
                 foreach ($quizData as $index => $question) {
                     echo "<div class='question'>";
                     echo "<p><strong>Question " . ($index + 1) . ":</strong> " . $question['question'] . "</p>";
